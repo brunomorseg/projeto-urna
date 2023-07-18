@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urna Eletrônica</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div class="numeros--contagem">
+        <div class="numeros--contagem-item"  ><button class="numeros--contagem-list" >-----1-----</button>     </div>       
+    </div>
+
+    <div class="container">
+        <div class="urna">
+            <div class="tela">
+                <div class="tela--d-1">
+                    <div class="tela--d-1-left">
+                        <div class="tela--d-1-1"><span>SEU VOTO PARA</span></div>
+                        <div class="tela--d-1-2"><span>VEREADOR</span></div>
+                        <div class="tela--d-1-3">
+                            <div class="numero pisca"></div>
+                            <div class="numero"></div>
+                        </div>
+                        <div class="tela--d-1-4">
+                            Nome: Fulano de Tal <br>
+                            Partido:QQQ <br>
+                            Vice-Prefeito: BELTRANO DE TAL
+
+
+                        </div>
+                    </div>
+                    <div class="tela--d-1-right">
+                       
+                    </div>
+                    
+                </div>
+                <div class="tela--d-1-fim pisca">FIM</div>
+
+                <div class="tela--d-2">
+                    Aperte a tela:
+                    <br>
+                    CONFIRMA para CONFIRMAR este voto
+                    <br>
+                    CORRIGE para REINICIAR este voto
+                </div>
+
+
+
+            </div>
+            <div class="teclado">
+                
+                <div class="numeros--area">
+                    
+                   
+                </div>
+
+                <div class="button">
+                    <button class="button--branco" onclick="branco()">Branco</button>
+                    <button class="button--corrige" onclick="corrige()">Corrige</button>
+                    <button class="button--confirma" onclick="confirma()">Confirma</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="etapas.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
