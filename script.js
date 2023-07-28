@@ -109,6 +109,7 @@ urnaContagem.map((item,index)=>{
     c('.numeros--area').append(contagem)
 })
 //-------------------------------------------------
+
 const comecarEtapa = () =>{
   let etapa = etapas[etapaAtual]
   let numeroHTML = ''
@@ -238,4 +239,6 @@ const branco = () => {
   elNumero.classList.add('pisca')
   
 };*/
+
+
 
