@@ -11,10 +11,62 @@ let urnaContagem = [
     {id:0, numero:0}
 ]
 
+let etapas = [
+  {
+      titulo: 'VEREADOR',
+      numeros: 5,
+      candidatos: [
+          {
+              numero: '38111',
+              nome: 'Fulano de Tal',
+              partido: 'ABC',
+              fotos:[
+                  {url:'38111.jpg', legenda: 'Vereador'}
+              ]
+          },
+          {
+              numero: '77222',
+              nome: 'Beltrano da Silva',
+              partido: 'DEFG',
+              fotos:[
+                  {url:'77222.jpg', legenda: 'Vereador'}
+              ]
+          },
+      ]
+  },
+  {
+      titulo: 'PREFEITO',
+      numeros: 2,
+      candidatos: [
+          {
+              numero: '99',
+              nome: 'Ciclano',
+              partido: 'ABC',
+              vice: 'Cic',
+              fotos:[
+                  {url:'99.jpg', legenda: 'Prefeito'},
+                  {url:'99_2.jpg', legenda: 'Vice-Prefeito', small: true}
+              ]
+          },
+          {
+              numero: '84',
+              nome: 'Zulano',
+              partido: 'QWERTY',
+              vice: 'Zul',
+              fotos:[
+                  {url:'84.jpg', legenda: 'Prefeito'},
+                  {url:'84_2.jpg', legenda: 'Vice-Prefeito', small: true}
+              ]
+          },
+      ]
+  }
+];
+
 const c = (e) => document.querySelector(e)
 const cs = (e) => document.querySelectorAll(e)
 
 let etapaAtual = 0
+let white = false
 let seuVotoPara = c('.tela--d-1-1 span')
 let cargo = c('.tela--d-1-2 span')
 let descricao = c('.tela--d-1-4')
@@ -58,8 +110,10 @@ urnaContagem.map((item,index)=>{
 })
 //-------------------------------------------------
 const comecarEtapa = () =>{
-  let etapa = etapas [etapaAtual]
+  let etapa = etapas[etapaAtual]
   let numeroHTML = ''
+  numero = ''
+  white = false
 
   for(let i=0; i<etapa.numeros;i++){
     if(i===0){
@@ -73,52 +127,85 @@ const comecarEtapa = () =>{
   aviso.style.display = 'none'
   numeros.innerHTML = numeroHTML
 }
+
 const atualizaInterface = () =>{
-  let etapa = etapas [etapaAtual]
-  let candidato = etapa.candidatos.filter((item)=>{
-    if(item.numero === numero){
-      return true
-    } else {
-      return false
-    }
-  })
-  console.log('Candidato', candidato)
+  let etapa = etapas[etapaAtual]
+  let candidato = etapa.candidatos.find((item)=>item.numero ===numero)
+
+  if (candidato) {console.log('Candidato', candidato)} else {console.log('Voto em Branco')}
+  
 }
 comecarEtapa()
 
 const corrige = () => {
-  document.querySelectorAll('.numero').forEach((element) => {
-    element.innerHTML = '';
-  });
-  let elNumero = c('.numero')
-  elNumero.classList.add('pisca')
-  
-};
+  numero = ''
+  comecarEtapa()
+}
+
+const confirma = () => {
+  let etapa = etapas[etapaAtual]
+
+  let votoConfirmado = false
+
+  if(white ===true){
+    votoConfirmado = true
+    console.log('Confirmando como BRANCO ')
+  } else if (numero.length === etapa.numeros) {
+    votoConfirmado = true
+    console.log('Confirmando como '+ numero)
+  }
+
+  if(votoConfirmado) {
+    etapaAtual++
+    if(etapas[etapaAtual] !==undefined) {
+      comecarEtapa()
+    } else {
+      document.querySelector('.tela').innerHTML = '<div class="aviso--gigante pisca">FIM</div>'
+    }
+     
+  }
+}
 
 
-const confirma = ()=>{
+const branco = () => {
+
+  numero = ''
+  white = true
+  seuVotoPara.style.display = 'block'
+  aviso.style.display = 'block'
+  numeros.innerHTML = ''
+  descricao.innerHTML = '<div class="aviso--grande pisca"> VOTO EM BRANCO </div>'
+  descricao.style.fontSize = '40px'
+  descricao.style.fontWeight = 'bold'
+
+}
+
+
+/*const confirma = ()=>{
   c('.tela--d-1-fim').style.display = 'none'
   c('.tela--d-1-3').style.display = 'flex'
   c('.tela--d-1-fim').innerHTML = 'FIM'
-  c('.tela--d-1-fim').style.fontSize ='100px'
+  c('.tela--d-1-fim').style.fontSize ='90px'
+
 
   if(etapaAtual ===2) {
     c('.tela--d-1-2').style.display = 'none'
     c('.tela--d-1-3').style.display = 'none'
-    aviso.style.display = 'none'
+    
     c('.tela--d-1-fim').style.display ='block'
+    
 
   } else{
   
-  etapaAtual = 1
-  
+    etapaAtual = 1
+    aviso.style.display = 'none'
     comecarEtapa ()
-  
+    
     aviso.style.display = 'block'
     etapaAtual +=1
-}}
+}}*/
 
-const branco = () => {
+/*const branco = () => {
   c('.tela--d-1-fim').style.display = 'block'
   c('.tela--d-1-3').style.display = 'none' 
   c('.tela--d-1-fim').style.fontSize ='50px'
@@ -128,5 +215,27 @@ const branco = () => {
   comecarEtapa()
 
 }
+*/
 
+/*const branco = () => {
+    if(numero === '') {
+      white = true;
+      c('.tela--d-1-fim').style.display = 'block'
+  c('.tela--d-1-3').style.display = 'none' 
+  c('.tela--d-1-fim').style.fontSize ='50px'
+  c('.tela--d-1-fim').innerHTML = 'VOTO EM BRANCO'
+
+    }
+}*/
+
+/*const corrige = () => {
+  numero = ''
+  comecarEtapa()
+  document.querySelectorAll('.numero').forEach((element) => {
+    element.innerHTML = '';
+  });
+  let elNumero = c('.numero')
+  elNumero.classList.add('pisca')
+  
+};*/
 
