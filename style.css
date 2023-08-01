@@ -238,3 +238,9 @@ body{
     }
 
 }
+
+@media (max-width:400px){
+    .urna{
+        width: 340px;
+    }
+}
