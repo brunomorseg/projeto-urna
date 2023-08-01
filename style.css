@@ -184,6 +184,9 @@ body{
 }
 
 .tela--d-1-4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex: 1;
     margin-top: 15px;
     line-height: 30px;
@@ -215,3 +218,23 @@ body{
     align-items: center;
 }
 
+
+@media (max-width:700px) {
+    .urna{
+        flex-direction: column;
+    }
+    .tela--d-1-2 {
+        height: 50px;
+    }
+    .tela--d-1-2 span {
+        margin-bottom: 40px;
+    }
+    .aviso--gigante {
+        margin: 15px;
+    }
+    .tela--d-1-4{
+        margin-top: auto;
+        margin-bottom: 10px;
+    }
+
+}

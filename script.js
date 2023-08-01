@@ -186,6 +186,7 @@ const branco = () => {
   aviso.style.display = 'block'
   numeros.innerHTML = ''
   descricao.innerHTML = '<div class="aviso--grande pisca"> VOTO EM BRANCO </div>'
+  document.querySelector('.tela--d-1-3').style.display = 'none'
   descricao.style.fontSize = '40px'
   descricao.style.fontWeight = 'bold'
 
