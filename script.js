@@ -113,8 +113,6 @@ urnaContagem.map((item,index)=>{
         
           if(numero==='38111'){
           descricao.innerHTML = `Candidato: ${etapas[0].candidatos[0].nome} <br> Partido: ${etapas[0].candidatos[0].partido} `} else if( numero==='77222') {descricao.innerHTML = `Candidato: ${etapas[1].candidatos[1].nome} <br> Partido: ${etapas[1].candidatos[1].partido} `} else if (numero==='99') {descricao.innerHTML = `Candidato: ${etapas[1].candidatos[0].nome} <br> Partido: ${etapas[1].candidatos[0].partido} `} else if (numero==='84') {descricao.innerHTML = `Candidato: ${etapas[1].candidatos[1].nome} <br> Partido: ${etapas[1].candidatos[1].partido} `} else {descricao.innerHTML = '<div class="aviso--grande pisca"> VOTO EM BRANCO </div>'}
-        
-        
         }
       } 
     })   
