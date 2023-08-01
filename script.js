@@ -100,15 +100,28 @@ urnaContagem.map((item,index)=>{
       
         if(elNumero.nextElementSibling!==null){
           elNumero.nextElementSibling.classList.add('pisca')
+        
         } else {
           atualizaInterface()
           aviso.style.display = 'block'
+          descricao.style.fontSize = '20px'
+          descricao.style.fontWeight = 'normal'
+
+          //O que eu quero? Quero colocar o nome de cada candidato, mas só quando realmente acertar o Número.
+          //Então depende do que? Posso fazer um If diretamente com o numero do candidato if(numero = '38111'){então isso} else if(numero ='') {então isso} 
+          //descricao.innerHTML = '<div class="aviso--grande pisca"> VOTO EM BRANCO </div>'
+        
+          if(numero==='38111'){
+          descricao.innerHTML = `Candidato: ${etapas[0].candidatos[0].nome} <br> Partido: ${etapas[0].candidatos[0].partido} `} else if( numero==='77222') {descricao.innerHTML = `Candidato: ${etapas[1].candidatos[1].nome} <br> Partido: ${etapas[1].candidatos[1].partido} `} else if (numero==='99') {descricao.innerHTML = `Candidato: ${etapas[1].candidatos[0].nome} <br> Partido: ${etapas[1].candidatos[0].partido} `} else if (numero==='84') {descricao.innerHTML = `Candidato: ${etapas[1].candidatos[1].nome} <br> Partido: ${etapas[1].candidatos[1].partido} `} else {descricao.innerHTML = '<div class="aviso--grande pisca"> VOTO EM BRANCO </div>'}
+        
+        
         }
       } 
     })   
     c('.numeros--area').append(contagem)
 })
 //-------------------------------------------------
+
 const comecarEtapa = () =>{
   let etapa = etapas[etapaAtual]
   let numeroHTML = ''
